@@ -53,7 +53,7 @@ export default class UsersController {
     }
   } //create
 
-  public async fetch({ request, response }: HttpContextContract) {
+  public async fetch({ response }: HttpContextContract) {
     try {
       const users = await User.query();
 
