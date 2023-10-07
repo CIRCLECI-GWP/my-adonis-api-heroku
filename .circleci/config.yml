@@ -1,7 +1,16 @@
 version: 2.1
-orbs:
-  heroku: circleci/heroku@0.0.10
+
+jobs:
+  deploy:
+    docker:
+      - image: cimg/base:2023.09
+    steps:
+      - checkout
+      - run:
+          name: Deploy app to Heroku
+          command: |
+            git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git main
 workflows:
-  heroku_deploy:
+  build-deploy:
     jobs:
-      - heroku/deploy-via-git
+      - deploy
