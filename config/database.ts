@@ -62,6 +62,7 @@ const databaseConfig: DatabaseConfig = {
         password: Env.get("DB_PASSWORD", PROD_MYSQL_DB.password),
         database: Env.get("DB_DATABASE", PROD_MYSQL_DB.pathname.substr(1)),
       },
+      healthCheck: false,
       debug: Env.get("DB_DEBUG", false),
     },
   },
