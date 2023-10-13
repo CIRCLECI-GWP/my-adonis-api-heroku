@@ -8,8 +8,6 @@
 import Env from "@ioc:Adonis/Core/Env";
 import Application from "@ioc:Adonis/Core/Application";
 import type { DatabaseConfig } from "@ioc:Adonis/Lucid/Database";
-import URL from "url-parse";
-const PROD_MYSQL_DB = new URL(Env.get("JAWSDB_URL"));
 
 const databaseConfig: DatabaseConfig = {
   /*
@@ -52,18 +50,6 @@ const databaseConfig: DatabaseConfig = {
       useNullAsDefault: true,
       healthCheck: false,
       debug: false,
-    },
-    mysql: {
-      client: "mysql",
-      connection: {
-        host: Env.get("DB_HOST", PROD_MYSQL_DB.host),
-        port: Env.get("DB_PORT", ""),
-        user: Env.get("DB_USER", PROD_MYSQL_DB.username),
-        password: Env.get("DB_PASSWORD", PROD_MYSQL_DB.password),
-        database: Env.get("DB_DATABASE", PROD_MYSQL_DB.pathname.substr(1)),
-      },
-      healthCheck: false,
-      debug: Env.get("DB_DEBUG", false),
     },
   },
 };
